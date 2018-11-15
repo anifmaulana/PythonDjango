@@ -1,7 +1,16 @@
-- UNTUK PUSH pertama kali (untuk ke dua kali dst tanpa git remote)
+#PUSH first
 
 git init 
 git add . 
 git commit -m "first commit" 
 git remote add origin https://github.com/anifmaulana/PythonDjango
 git push -u origin master
+
+NOTES: untuk ke dua kali dst tanpa git remote
+
+
+#PULL first
+
+git init
+git remote add origin https://github.com/anifmaulana/PythonDjango
+git pull origin master
