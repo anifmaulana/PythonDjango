@@ -1,0 +1,164 @@
+{% extends 'template.html'%}
+{%block title%}
+       {{loan.title}}
+{%endblock%}
+{%block content%}
+ <h3 class="page-title">
+     Pinjaman Kembali <small>Pinjaman</small>
+ </h3>
+<div class="page-bar">
+    <ul class="page-breadcrumb">
+           <li>
+                  <i class="fa fa-home"></i>
+                  <a href="{{'/'}}">Home</a>
+                  <i class="fa fa-angle-right"></i>
+           </li>
+           <li>
+                  <a href="{{'/loan'}}">Pinjaman</a>
+                  <i class="fa fa-angle-right"></i>
+           </li>
+           <li>
+                  <i>Pinjaman Kembali</i>
+           </li>
+    </ul>
+    <div class="page-toolbar">
+           <div id="dashboard-report-range" class="pull-right tooltips btn btn-fit-height grey-salt" data-placement="top" data-original-title="Change dashboard date range">
+                  <i class="icon-calendar"></i>&nbsp;
+                  <span class="thin uppercase visible-lg-inline-block">&nbsp;</span>&nbsp;
+                  <i class="fa fa-angle-down"></i>
+           </div>
+    </div>
+</div>
+<div style="clear: both; width: 100%; height: 25px"></div>
+<div class="col-md-12">
+    <!-- TESTING -->
+    <div class="portlet box grey-cascade">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class="fa fa-user"></i>Informasi Data Nasabah
+            </div>
+            <div class="tools" >
+                <a href="javascript:;" class="collapse" data-original-title="" title="">
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            {% for c in customer %}
+            <form action="{% url 'customer:add_repeat_order' loanid%}" method="post" class="horizontal-form">
+                {% csrf_token %}
+                <div class="form-body">
+                    <h3 class="form-section"><b>Data Diri</b></h3>
+                    <input type="hidden" id="custid" name="custid" class="form-control" value="{{c.id}}" placeholder="Anif">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Nama Awal</label>
+                                <input type="text" id="firstName" name="first_name" class="form-control" value="{{c.first_name}}" placeholder="Anif">
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Nama Belakang</label>
+                                <input type="text" id="lastName" name="last_name" class="form-control" value="{{c.last_name}}"  placeholder="Maulana">
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+                    <!--/row-->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Jenis Kelamin</label>
+                                <select class="form-control" name="gender">
+                                    <option value="m">Male</option>
+                                    <option value="f">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--/span-->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-12" style="position: relative; left: -15px">Tanggal Lahir</label>
+                                <input type="text"  name="birthdate" data-date-format="yyyy-mm-dd"  class="col-md-5 form-control form-control-inline input-medium date-picker"  placeholder="yyyy-mm-dd"  value="{{c.date_birth |date:"Y-m-d" }}" readonly>
+                                <span class="input-group-btn col-md-7" style="position: relative; left: -13px">
+                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <!--/span-->
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Nomer Telfon</label>
+                                <input type="text" class="form-control" name="phone" value="{{c.phone}}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">No KTP</label>
+                                <input type="text" class="form-control" name="ktp" value="{{c.ktp}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">No NPWP</label>
+                                <input type="text" class="form-control" name="npwp" value="{{c.npwp}}">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <input type="text" class="form-control" name="email" value="{{c.email}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Jumlah Pinjaman</label>
+                                <input type="text" class="form-control" name="jumlah_pinjaman">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Jangka Waktu</label>
+                                <select class="form-control" name="jangka_waktu">
+                                    <option value="12">12</option>
+                                    <option value="24">24</option>
+                                    <option value="36">36</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Bunga</label>
+                                <input type="text" class="form-control" name="bunga">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-actions right">
+                    <button type="button" class="btn default">Batal</button>
+                    <button type="submit" class="btn blue"><i class="fa fa-check"></i> Simpan</button>
+                </div>
+            </form>
+            {%endfor%}
+            <!-- END FORM-->
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+</div>
+{%endblock%}
+

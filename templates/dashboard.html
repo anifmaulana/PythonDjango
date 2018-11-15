@@ -1,0 +1,67 @@
+{% extends 'template.html'%}
+{% load humanize %}
+
+{%block title%}
+       Dashboard - page
+{%endblock%}
+{%block content%}
+
+ <div class="col-md-12">
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+           <div class="dashboard-stat blue-madison">
+                  <div class="visual">
+                         <i class="fa fa-comments"></i>
+                  </div>
+                  <div class="details">
+                         <div class="number">
+                            {{sum_onprogres.loans__sum | intcomma }}
+                         </div>
+                          <div class="desc" style="font-size:14px">
+                          Total Produk Pinjaman Aktif
+
+                         </div>
+                  </div>
+                  <a class="more" href="#">
+                          {{actif_cust}} produk pinjaman aktif <i class="m-icon-swapright m-icon-white"></i>
+                  </a>
+           </div>
+    </div>
+    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+    <div class="dashboard-stat red-intense">
+           <div class="visual">
+                  <i class="fa fa-bar-chart-o"></i>
+           </div>
+           <div class="details">
+                  <div class="number">
+                        {{sum_paid.loans__sum | intcomma }}
+                  </div>
+                  <div class="desc" style="font-size:14px">
+                          Total Produk Pinjaman Tidak Aktif
+                  </div>
+           </div>
+           <a class="more" href="#">
+           {{nonactif_cust}} produk pinjaman Tidak aktif <i class="m-icon-swapright m-icon-white"></i>
+           </a>
+    </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+    <div class="dashboard-stat dashboard-stat green-haze">
+       <div class="visual">
+              <i class="fa fa-bar-chart-o"></i>
+       </div>
+       <div class="details">
+              <div class="number">
+                  {{sum_loans.loans__sum | intcomma }}
+              </div>
+              <div class="desc">
+                      Jumlah Profit Pinjaman Aktif
+              </div>
+       </div>
+       <a class="more" href="#">
+       View more <i class="m-icon-swapright m-icon-white"></i>
+       </a>
+    </div>
+    </div>
+
+ </div>
+{%endblock%}
