@@ -1,4 +1,4 @@
-- UNTUK PUSH pertama kali (untu ke dua kali dst tanpa git remote)
+- UNTUK PUSH pertama kali (untuk ke dua kali dst tanpa git remote)
 
 git init 
 git add . 
