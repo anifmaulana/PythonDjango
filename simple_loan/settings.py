@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['*',]
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
+    'simple_loan',
     'mathfilters',
     'django.contrib.humanize',
     'loan.apps.LoanConfig',
@@ -84,7 +86,7 @@ DATABASES = {
         'USER': 'postgres',
         'PASSWORD': '1234567',
         'HOST': 'localhost',
-        'PORT': '5771',
+        'PORT': '5432',
     }
 }
 

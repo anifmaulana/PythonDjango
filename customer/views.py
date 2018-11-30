@@ -41,6 +41,8 @@ def detail_loan_customer(request,id):
 
 def add_user_customer(request,id):
        # print('OKE')
+       print(request)
+
        customer = Customer()
        customers_rel_loan = Customers_rel_loan()
        loan = Loan()

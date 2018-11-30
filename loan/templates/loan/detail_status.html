@@ -70,8 +70,9 @@
         </div>
         <div class="portlet-body form" style="display: none">
             <!-- BEGIN FORM-->
-            <form action="{% url 'customer:add_user_customer' loan.id %}" method="post" class="horizontal-form">
+            <form  method="post" action="{% url 'customer:add_user_customer' loan.id %}" id="formCustomer" class="horizontal-form">
                 {% csrf_token %}
+                <input type="hidden" value="{{loan.id}}" name="loanid" id="loanid">
                 <div class="form-body">
                     <h3 class="form-section"><b>Data Diri</b></h3>
                     <div class="row">
@@ -173,7 +174,7 @@
                 </div>
                 <div class="form-actions right">
                     <button type="button" class="btn default">Batal</button>
-                    <button type="submit" class="btn blue"><i class="fa fa-check"></i> Simpan</button>
+                    <button type="submit" id="submitCust" class="btn blue"><i class="fa fa-check"></i> Simpan</button>
                 </div>
             </form>
             <!-- END FORM-->
